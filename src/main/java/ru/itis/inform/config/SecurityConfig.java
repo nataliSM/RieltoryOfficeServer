@@ -76,8 +76,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private RequestMatcher authenticationIgnoredRequests() {
-        RequestMatcher postLoginMatcher = new AntPathRequestMatcher("/login", "POST");
-        RequestMatcher ignored = new OrRequestMatcher(postLoginMatcher);
+        RequestMatcher postLoginMatcher = new AntPathRequestMatcher("/users/login", "POST");
+        RequestMatcher postRegistrationMatcher = new AntPathRequestMatcher("/users/register", "POST");
+        RequestMatcher ignored = new OrRequestMatcher(postLoginMatcher, postRegistrationMatcher);
         return ignored;
     }
 
