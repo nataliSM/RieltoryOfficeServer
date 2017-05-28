@@ -39,7 +39,7 @@ public class JwtTokenServiceImpl implements TokenService {
                     .getBody();
 
             if (new Date().after(body.getExpiration())) {
-                return null;
+                return Optional.empty();
             }
             List<GrantedAuthority> authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList((String)body.get(ROLE_KEY));
             Long id = Long.parseLong(body.getId());
@@ -48,7 +48,7 @@ public class JwtTokenServiceImpl implements TokenService {
             return Optional.of(u);
 
         } catch (JwtException | ClassCastException e) {
-            return null;
+            return Optional.empty();
         }
     }
 
