@@ -21,13 +21,13 @@ public class Address {
     private Integer flat;
 
 
-    @ManyToOne(targetEntity = City.class, fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+    @ManyToOne(targetEntity = City.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn (name = "city_id")
     private  City city;
 
 
 
-    @ManyToOne (targetEntity = Street.class, fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+    @ManyToOne (targetEntity = Street.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn (name = "street_id")
     private  Street street;
 
